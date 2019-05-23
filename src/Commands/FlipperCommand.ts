@@ -30,22 +30,13 @@ export class FlipperCommand extends CommandBase {
      */
     public async run(command: CommandParser) {
 
-        const split = command.arguments[ 0 ];
+        const split = command.arguments[ 0 ].name.split('|');
 
-        console.log(split);
+        if (split.length > 0) {
 
-        console.log(command.arguments);
-        //
-        // const embed = new RichEmbed().setTitle('Flip!')
-        //                              .setColor(3447003);
-        //
-        // results.forEach(row => {
-        //
-        //     embed.addField(`❯ ${ row.total } points`, `<@${ row.to_userid }>`);
-        //
-        // });
-        //
-        // command.obj.channel.send(embed);
+            command.obj.channel.send(split[ Math.floor(Math.random() * split.length) ]);
+
+        }
 
     }
 
